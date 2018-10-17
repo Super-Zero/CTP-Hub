@@ -1,12 +1,12 @@
-###Branches
+### Branches
 
-` develop
+ **develop**
 > All the development will be merged here before master.
 
-` master
+ **master**
 > Once in develop and tested, we will merge it to master
 
-` personal
+ **personal**
 > When working on our own task, we will branch off to some personal branch.
 
 
