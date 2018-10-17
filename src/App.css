@@ -3,13 +3,16 @@
 }
 
 .App-logo {
+  margin-right: auto;
+  margin-left: auto;
   height: 40vmin;
+  width: 50vmin;
 }
 
 .App-header {
   padding-top: 5vh;
-  background: url(background.svg) no-repeat center center fixed;
-  background-size: cover;  
+  background: url(background.png) no-repeat center center fixed;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

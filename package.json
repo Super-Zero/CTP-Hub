@@ -21,5 +21,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeyaam95/CTP-Hub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeyaam95/CTP-Hub/issues"
+  },
+  "homepage": "https://github.com/zeyaam95/CTP-Hub#readme",
+  "description": ""
 }
