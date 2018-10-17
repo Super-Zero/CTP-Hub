@@ -1,5 +1,7 @@
 ### Branches
 
+**Always pull before working on something.** 
+
  **develop**
 > All the development will be merged here before master.
 
