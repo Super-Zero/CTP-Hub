@@ -1,3 +1,6 @@
+## CUNY Tech Prep Hub
+CTP_Hub is the made for CTP students and staff by CTP students. The goal of CTP_Hub is to make Job tracking easier for the students and also provide a cleaner student management interface for the CTP staff. If you have exciting features that you want to share then send us a DM on Twitter: @ZeyaamShahid
+
 ### Branches
 
 **Always pull before working on something.** 
