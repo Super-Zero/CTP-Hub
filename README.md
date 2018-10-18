@@ -1,3 +1,6 @@
+## CUNY Tech Prep Hub
+CTP_Hub is the made for CTP students and staff by CTP students. The goal of CTP_Hub is to make Job tracking easier for the students and also provide a cleaner student management interface for the CTP staff. If you have exciting features that you want to share then send us a DM on Twitter: @ZeyaamShahid
+
 ### Branches
 
 **Always pull before working on something.** 
@@ -6,9 +9,9 @@
 > All the development will be merged here before master.
 
  **master**
-> Once in develop and tested, we will merge it to master
+> Once in development AND testing is done, merge it to master
 
  **personal**
-> When working on our own task, we will branch off to some personal branch.
+> When working on our own task, please branch off to some personal branch.
 
 

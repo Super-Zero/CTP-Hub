@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import logo from './CTPHUB.png';
+import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
+import Home from './Views/Home.js'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            CTP_Hub is under development . . .
-          </p>
-        </header>
-      </div>
+        <BrowserRouter>
+          <div>
+          <Route exact={true} path='/' render={() => (
+            <div className="App">
+              <Home />
+            </div>
+            )}/>
+          </div>
+        </BrowserRouter>
     );
   }
 }
