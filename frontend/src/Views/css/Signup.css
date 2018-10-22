@@ -1,11 +1,40 @@
 #sButton:focus,#sButton:active {
     outline: none !important;
     box-shadow: none;
-  }
+}
+
+a {
+    text-decoration: none;
+    color: #2ecc71;
+}
+
+a:hover {
+    color: #27ae60;
+}
+
+.S-button {
+    display: block;
+    float: left;
+    width: 50%;
+    border-bottom: 1px solid #dedede;
+    border-top: 1px solid #dedede;
+    padding-top: 5px;
+    padding-bottom: 8px;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+
+.S-button:hover {
+    background-color: #27ae60;
+}
+
+#signup {
+    background-color: #2ecc71;
+}
 
 .Login {
     color: #dedede;
-    height: 75vh;
+    height: 80vh;
     width: 550px;
     background-color: rgba(11,11,11,0.2);
     border: 1px solid #dedede;
@@ -24,12 +53,13 @@
 }
 
 .Login-logo {
-    padding-top: 5vh;
+    padding-top: 3vh;
     margin-right: auto;
     margin-left: auto;
     height: 20vmin;
     width: 23.5vmin;
     margin-bottom: 20px;
+    display: block;
 }
 
 .inpForm {
@@ -61,7 +91,7 @@
 
 input[type=text], input[type="password"], select, textarea {
     color: #dedede;
-    font-size: 16px;
+    font-size: calc(2px + 1.5vmin);
     height: 6px;
     border: 0;
     outline: 0;
@@ -73,7 +103,7 @@ input[type=text], input[type="password"], select, textarea {
 }
 
 label {
-    font-size: 22px;
+    font-size: calc(7px + 1.5vmin);
 }
 
 
@@ -82,12 +112,15 @@ label {
     margin-right: auto;
     margin-left: auto;
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: calc(5px + 1.5vmin);
     background-color: #2ecc71;
     border: none;
     color: #dedede;
 }
 
+#sButton:hover {
+    background-color: #27ae60;
+}
 
 .row:after {
     content: "";
@@ -107,4 +140,11 @@ label {
     float: left;
     width: 65%;
     margin-top: 6px;
+}
+
+.Member {
+    font-style: italic;
+    color: #dedede;
+    margin-top: 1.5vh;
+    font-size: calc(2px + 1.5vmin);
 }

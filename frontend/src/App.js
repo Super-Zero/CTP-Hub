@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import Home from './Views/Home.js'
-import LoginStudent from './Views/LoginStudent.js'
+import Signup from './Views/Signup'
 
 class App extends Component {
   render() {
@@ -14,9 +14,9 @@ class App extends Component {
               <Home />
             </div>
             )}/>
-            <Route exact={true} path='/Signup' render={() => (
+            <Route exact={true} path='/signup' render={() => (
             <div className="App">
-              <LoginStudent />
+              <Signup />
             </div>
             )}/>
           </div>
