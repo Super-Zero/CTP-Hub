@@ -14,7 +14,7 @@ class App extends Component {
               <Home />
             </div>
             )}/>
-            <Route exact={true} path='/Login' render={() => (
+            <Route exact={true} path='/Signup' render={() => (
             <div className="App">
               <LoginStudent />
             </div>

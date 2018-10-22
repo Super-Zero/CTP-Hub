@@ -1,7 +1,3 @@
-*:focus,*:active {
-  outline: none !important;
-  box-shadow: none;
-}
 .App {
   text-align: center;
 }
