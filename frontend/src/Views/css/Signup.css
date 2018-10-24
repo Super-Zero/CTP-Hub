@@ -34,8 +34,8 @@ a:hover {
 
 .Login {
     color: #dedede;
-    height: 80vh;
-    width: 550px;
+    height: 88vh;
+    width: 66vh;
     background-color: rgba(11,11,11,0.2);
     border: 1px solid #dedede;
     border-radius: 20px;
@@ -56,14 +56,14 @@ a:hover {
     padding-top: 3vh;
     margin-right: auto;
     margin-left: auto;
-    height: 20vmin;
-    width: 23.5vmin;
+    height: 20vh;
+    width: 23.5vh;
     margin-bottom: 20px;
     display: block;
 }
 
 .inpForm {
-    margin-top: 20px;
+    margin-top: 2vh;
     padding-top: 20vh;
     content:"";
 }
@@ -79,26 +79,26 @@ a:hover {
     padding-left: 35px;
     float: left;
     width: 33%;
-    margin-top: 12px;
+    margin-top: 1.7vh;
 }
 
 .Col-75 {
     float: left;
     width: 55%;
-    margin-top: 6px;
+    margin-top: 0.7vh;
 }
 
 
 input[type=text], input[type="password"], select, textarea {
     color: #dedede;
     font-size: calc(2px + 1.5vmin);
-    height: 6px;
+    height: 0.7vh;
     border: 0;
     outline: 0;
     background: transparent;
     border-bottom: 1px solid white;
     width: 70%;
-    padding: 12px;
+    padding: 1.2vh;
     resize: vertical;
 }
 
@@ -108,10 +108,10 @@ label {
 
 
 #sButton {
-    margin-top: 40px;
+    margin-top: 4vh;
     margin-right: auto;
     margin-left: auto;
-    padding: 10px 16px;
+    padding: 1vh 1.8vh;
     font-size: calc(5px + 1.5vmin);
     background-color: #2ecc71;
     border: none;
@@ -126,20 +126,6 @@ label {
     content: "";
     display: table;
     clear: both;
-}
-
-.col-25 {
-    text-align: left;
-    padding-left: 35px;
-    float: left;
-    width: 27%;
-    margin-top: 12px;
-}
-
-.col-75 {
-    float: left;
-    width: 65%;
-    margin-top: 6px;
 }
 
 .Member {
