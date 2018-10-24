@@ -19,4 +19,26 @@ frontend/.env.production.local
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
+
+
+# dependencies
+backend/node_modules
+
+# testing
+backend/coverage
+
+# production
+backend/build
+
+# misc
+backend/.DS_Store
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local
+
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+
 .DS_Store
