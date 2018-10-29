@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import './css/Signup.css';
 import logo from '../CTPHUB.png';
 import '../App';
-
+import axios from 'axios';
 
 class InputForm extends Component {
   render() {
@@ -72,6 +72,10 @@ class LoginStudent extends Component {
     let canProceed = this.validateEmail(this.state.eMail);
     if (canProceed) {
       alert("An Email has been sent to "+this.state.eMail+" which contains the instrucitons to activate you account.");
+      axios.post(`http://localhost:3001/users/signup`,{
+        "email":this.state.eMail,
+        "password":this.state.password
+      });
       event.target.reset();
     } 
   }
