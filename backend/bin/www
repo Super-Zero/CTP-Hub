@@ -13,7 +13,7 @@ const models = require('../models');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
 
@@ -33,7 +33,7 @@ models.sequelize.sync({ force: false })
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
-      console.log('Server is up and running on port: 300')
+      console.log('Server is up and running on port: 3001')
   })
 
 /**
