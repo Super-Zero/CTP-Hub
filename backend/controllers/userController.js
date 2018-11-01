@@ -16,9 +16,9 @@ exports.signUp = (req,res,next)=>
 	.then((result)=>{
 		 res.status(200).json({'message':'User has been created!'})
 	}).catch(err=>{
-		return res.status(500).json({'message':'User Creation has been failed!',
+		res.status(400).json({'message':'User Creation has been failed!',
 								'error':err})
-	})
+	});
 }
 
 
@@ -64,6 +64,14 @@ exports.login = (req,res, next)=>
 		console.log(err)
 		res.status(400).json({'error':err})
 	});
+}
+
+exports.get = (req,res,next)=>
+{
+	models.User.findAll().then(result=>
+	{
+		res.status(200).json(result);
+	})
 }
 
 

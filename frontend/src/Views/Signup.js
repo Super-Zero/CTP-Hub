@@ -74,7 +74,16 @@ class LoginStudent extends Component {
       console.log("An Email has been sent to "+this.state.eMail+" which contains the instrucitons to activate you account.");
       axios.post(`http://localhost:3001/users/signup`,{
         "email":this.state.eMail,
-        "password":this.state.password
+        "password":this.state.password,
+        "typeOfUser": this.state.studentSignUp? "student" : "staff"
+      }).then(res=>
+      {
+        alert("Sucessful signing up!");
+        console.log(res);
+      }).catch(err=>
+      {
+        alert("Unsucessful signing up!");
+        console.log(err);
       });
       event.target.reset();
     } 
