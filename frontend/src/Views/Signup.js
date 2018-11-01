@@ -71,7 +71,7 @@ class LoginStudent extends Component {
     console.log(this.state.eMail);
     let canProceed = this.validateEmail(this.state.eMail);
     if (canProceed) {
-      alert("An Email has been sent to "+this.state.eMail+" which contains the instrucitons to activate you account.");
+      console.log("An Email has been sent to "+this.state.eMail+" which contains the instrucitons to activate you account.");
       axios.post(`http://localhost:3001/users/signup`,{
         "email":this.state.eMail,
         "password":this.state.password
