@@ -11,10 +11,29 @@ import axios from 'axios';
 
 class InputForm extends Component {
   render() {
-    let elements = Object.keys(this.props.field).map((key ,index) => {
+    let fieldInputs = this.props.field;
+    let fieldNames = this.props.placeHolder
+    if (this.props.isStudent === true && this.props.isPassword === false) {
+      fieldInputs["sCode"] = (event) => {
+        this.setState({
+          sCode: event.target.value
+        });
+      }
+      fieldNames.push("Student Code")
+    }
+    else if (this.props.isStudent === false && this.props.isPassword === false){
+      fieldInputs["staffCode"] = (event) => {
+        this.setState({
+          staffCode: event.target.value
+        });
+      }
+      fieldNames.push("Staff Code")
+    }
+    console.log(Object.keys(fieldInputs), this.props.placeHolder)
+    let elements = Object.keys(fieldInputs).map((key ,index) => {
         return (<div className="Row">
           <div className="Col-25">
-            {(!this.props.isPassword)? <label htmlFor={this.props.field[key]}>{this.props.placeHolder[index]}</label> : <label htmlFor={this.props.field[key]}>{key}</label>}
+            {(!this.props.isPassword)? <label htmlFor={fieldInputs[key]}>{fieldNames[index]}</label> : <label htmlFor={fieldInputs[key]}>{key}</label>}
           </div>
           <div className="Col-75">
           {(!this.props.isPassword)? <input type="text" onChange={this.props.field[key]} name={key} placeholder={this.props.placeHolder[index]} ref={key} id="inpF"/> : <input type="password" onChange={this.props.field[key]} name={key} placeholder={this.props.placeHolder[index]} ref={key} validator="true" minCharacters="8" requireCapitals="1" requireNumbers="1" id="inpF"/>}
@@ -27,7 +46,7 @@ class InputForm extends Component {
 
 class StuStaffButton extends Component {
   render() {
-    return <div className="S-button" id={this.props.comp} onClick={this.props.handleButtonClick}>{this.props.student}</div>
+    return <div className="S-button" id={this.props.comp} onClick={() => this.props.handleButtonClick(this.props.name)}>{this.props.student}</div>
   }
 }
 
@@ -90,9 +109,14 @@ class LoginStudent extends Component {
   }
   
 
-  handleButtonClick() {
+  handleButtonClick = (name) => {
     const sSignUp = this.state.studentSignUp;
-    this.setState({studentSignUp : !sSignUp});
+    if (name === "Staff" && sSignUp === true) {
+      this.setState({studentSignUp : !sSignUp});
+    }
+    else if (name === "Student" && sSignUp === false) {
+      this.setState({studentSignUp : !sSignUp});
+    }
   }
 
   render() {
@@ -111,11 +135,6 @@ class LoginStudent extends Component {
         this.setState({
           eMail: event.target.value
         });
-      },
-      "code" : (event) => {
-        this.setState({
-          sCode: event.target.value
-        });
       }
     }
 
@@ -132,7 +151,7 @@ class LoginStudent extends Component {
       }
     }
 
-    let placeHolders = ["First Name","Last Name", "E-mail", "Student Code"]
+    let placeHolders = ["First Name","Last Name", "E-mail"]
     let passHolder = ["Enter a Password", "Re-enter Password"]
     const studentSignUp = this.state.studentSignUp;
 
@@ -141,11 +160,11 @@ class LoginStudent extends Component {
       <header className="Login-header">
         <div className="Login">
           <img src={logo} className="Login-logo" alt="logo" />
-          <StuStaffButton student="Student" comp={studentSignUp? "signup":""} handleButtonClick={this.handleButtonClick}/>
-          <StuStaffButton student="Staff" comp={studentSignUp? "":"signup"} handleButtonClick={this.handleButtonClick}/>
+          <StuStaffButton student="Student" comp={studentSignUp? "signup":""} handleButtonClick={this.handleButtonClick} name="Student"/>
+          <StuStaffButton student="Staff" comp={studentSignUp? "":"signup"} handleButtonClick={this.handleButtonClick} name="Staff"/>
           <div classname="inpForm">
           <form onSubmit={this.handleSubmitForm}>
-            <InputForm field={inputFields} placeHolder={placeHolders} isPassword={false}/>
+            <InputForm field={inputFields} placeHolder={placeHolders} isPassword={false} isStudent={studentSignUp}/>
             <InputForm field={passFields} placeHolder={passHolder} isPassword={true}/>
             <button type="submit" id="sButton" className= "button">Sign Up as a {studentSignUp? "Student":"Staff"}</button>
             </form>
