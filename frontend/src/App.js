@@ -3,6 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import Home from './Views/Home.js'
 import Signup from './Views/Signup'
+import Login from './Views/Login'
 
 class App extends Component {
   render() {
@@ -17,6 +18,11 @@ class App extends Component {
             <Route exact={true} path='/signup' render={() => (
             <div className="App">
               <Signup />
+            </div>
+            )}/>
+            <Route exact={true} path='/login' render={() => (
+            <div className="App">
+              <Login />
             </div>
             )}/>
           </div>

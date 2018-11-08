@@ -5,6 +5,7 @@ Date: 10/22/2018
 
 import React, { Component } from 'react';
 import './css/Signup.css';
+import './css/Login.css';
 import logo from '../CTPHUB.png';
 import '../App';
 import axios from 'axios';
@@ -13,27 +14,10 @@ class InputForm extends Component {
   render() {
     let fieldInputs = this.props.field;
     let fieldNames = this.props.placeHolder
-    if (this.props.isStudent === true && this.props.isPassword === false) {
-      fieldInputs["sCode"] = (event) => {
-        this.setState({
-          sCode: event.target.value
-        });
-      }
-      fieldNames.push("Student Code")
-    }
-    else if (this.props.isStudent === false && this.props.isPassword === false){
-      fieldInputs["staffCode"] = (event) => {
-        this.setState({
-          staffCode: event.target.value
-        });
-      }
-      fieldNames.push("Staff Code")
-    }
-    console.log(Object.keys(fieldInputs), this.props.placeHolder)
     let elements = Object.keys(fieldInputs).map((key ,index) => {
         return (<div className="Row">
           <div className="Col-25">
-            {(!this.props.isPassword)? <label htmlFor={fieldInputs[key]}>{fieldNames[index]}</label> : <label htmlFor={fieldInputs[key]}>{key}</label>}
+            {(!this.props.isPassword)? <label htmlFor={fieldInputs[key]}>{this.props.placeHolder[index]}</label> : <label htmlFor={fieldInputs[key]}>{key}</label>}
           </div>
           <div className="Col-75">
           {(!this.props.isPassword)? <input type="text" onChange={this.props.field[key]} name={key} placeholder={this.props.placeHolder[index]} ref={key} id="inpF"/> : <input type="password" onChange={this.props.field[key]} name={key} placeholder={this.props.placeHolder[index]} ref={key} validator="true" minCharacters="8" requireCapitals="1" requireNumbers="1" id="inpF"/>}
@@ -51,7 +35,7 @@ class StuStaffButton extends Component {
 }
 
 
-class SignupStudent extends Component {
+class LoginStudent extends Component {
   constructor() {
     super();
     this.state = {
@@ -121,16 +105,6 @@ class SignupStudent extends Component {
 
   render() {
     const inputFields = {
-      "firstname" : (event) => {
-        this.setState({
-          fName: event.target.value
-        });
-      },
-      "lastname" : (event) => {
-        this.setState({
-          lName: event.target.value
-        });
-      },
       "email" : (event) => {
         this.setState({
           eMail: event.target.value
@@ -143,22 +117,17 @@ class SignupStudent extends Component {
         this.setState({
           password: event.target.value
         })
-      },
-      "Confirm Password" : (event) => {
-        this.setState({
-          confirmPassword: event.target.value
-        })
       }
     }
 
-    let placeHolders = ["First Name","Last Name", "E-mail"]
-    let passHolder = ["Enter a Password", "Re-enter Password"]
+    let placeHolders = ["E-mail"]
+    let passHolder = ["Enter your Password"]
     const studentSignUp = this.state.studentSignUp;
 
     return (
       <div className="App">
       <header className="Login-header">
-        <div className="Login">
+        <div className="LoginForm">
           <img src={logo} className="Login-logo" alt="logo" />
           <StuStaffButton student="Student" comp={studentSignUp? "signup":""} handleButtonClick={this.handleButtonClick} name="Student"/>
           <StuStaffButton student="Staff" comp={studentSignUp? "":"signup"} handleButtonClick={this.handleButtonClick} name="Staff"/>
@@ -166,10 +135,10 @@ class SignupStudent extends Component {
           <form onSubmit={this.handleSubmitForm}>
             <InputForm field={inputFields} placeHolder={placeHolders} isPassword={false} isStudent={studentSignUp}/>
             <InputForm field={passFields} placeHolder={passHolder} isPassword={true}/>
-            <button type="submit" id="sButton" className= "button">Sign Up as a {studentSignUp? "Student":"Staff"}</button>
+            <button type="submit" id="sButton" className= "button">Login as a {studentSignUp? "Student":"Staff"}</button>
             </form>
           </div>
-          <div className="Member">Already a Member? <a href="/login">Log-in</a></div>
+          <div className="Member">Not a Member? <a href="/signup">Sign-up</a></div>
         </div>
       </header>
       </div>
@@ -177,4 +146,4 @@ class SignupStudent extends Component {
   }
 }
 
-export default SignupStudent;
+export default LoginStudent;
