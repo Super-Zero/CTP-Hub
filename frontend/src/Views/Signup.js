@@ -9,6 +9,8 @@ import logo from '../CTPHUB.png';
 import '../App';
 import axios from 'axios';
 
+
+
 class InputForm extends Component {
   render() {
     let fieldInputs = this.props.field;
@@ -31,12 +33,39 @@ class InputForm extends Component {
     }
     console.log(Object.keys(fieldInputs), this.props.placeHolder)
     let elements = Object.keys(fieldInputs).map((key ,index) => {
-        return (<div className="Row">
+        return (
+        <div className="Row">
           <div className="Col-25">
-            {(!this.props.isPassword)? <label htmlFor={fieldInputs[key]}>{fieldNames[index]}</label> : <label htmlFor={fieldInputs[key]}>{key}</label>}
+            {(!this.props.isPassword)? 
+              <label htmlFor={fieldInputs[key]}>
+                {fieldNames[index]}
+              </label> 
+              : 
+              <label htmlFor={fieldInputs[key]}>
+                {key}
+              </label>}
           </div>
           <div className="Col-75">
-          {(!this.props.isPassword)? <input type="text" onChange={this.props.field[key]} name={key} placeholder={this.props.placeHolder[index]} ref={key} id="inpF"/> : <input type="password" onChange={this.props.field[key]} name={key} placeholder={this.props.placeHolder[index]} ref={key} validator="true" minCharacters="8" requireCapitals="1" requireNumbers="1" id="inpF"/>}
+          {(!this.props.isPassword)? 
+            <input 
+              type="text" 
+              onChange={this.props.field[key]} 
+              name={key} 
+              placeholder={this.props.placeHolder[index]} 
+              ref={key} 
+              id="inpF"/> 
+            : 
+            <input 
+              type="password" 
+              onChange={this.props.field[key]} 
+              name={key} 
+              placeholder={this.props.placeHolder[index]} 
+              ref={key} 
+              validator="true" 
+              minCharacters="8" 
+              requireCapitals="1" 
+              requireNumbers="1" 
+              id="inpF"/>}
           </div>
         </div>);
       })
@@ -151,7 +180,7 @@ class SignupStudent extends Component {
       }
     }
 
-    let placeHolders = ["First Name","Last Name", "E-mail"]
+    let placeHolders = ["First Name","Last Name", "Enter an E-mail"]
     let passHolder = ["Enter a Password", "Re-enter Password"]
     const studentSignUp = this.state.studentSignUp;
 
@@ -160,12 +189,27 @@ class SignupStudent extends Component {
       <header className="Login-header">
         <div className="Login">
           <img src={logo} className="Login-logo" alt="logo" />
-          <StuStaffButton student="Student" comp={studentSignUp? "signup":""} handleButtonClick={this.handleButtonClick} name="Student"/>
-          <StuStaffButton student="Staff" comp={studentSignUp? "":"signup"} handleButtonClick={this.handleButtonClick} name="Staff"/>
+          <StuStaffButton 
+            student="Student" 
+            comp={studentSignUp? "signup":""} 
+            handleButtonClick={this.handleButtonClick} 
+            name="Student"/>
+          <StuStaffButton 
+            student="Staff" 
+            comp={studentSignUp? "":"signup"} 
+            handleButtonClick={this.handleButtonClick} 
+            name="Staff"/>
           <div classname="inpForm">
           <form onSubmit={this.handleSubmitForm}>
-            <InputForm field={inputFields} placeHolder={placeHolders} isPassword={false} isStudent={studentSignUp}/>
-            <InputForm field={passFields} placeHolder={passHolder} isPassword={true}/>
+            <InputForm 
+              field={inputFields} 
+              placeHolder={placeHolders} 
+              isPassword={false} 
+              isStudent={studentSignUp}/>
+            <InputForm 
+              field={passFields} 
+              placeHolder={passHolder} 
+              isPassword={true}/>
             <button type="submit" id="sButton" className= "button">Sign Up as a {studentSignUp? "Student":"Staff"}</button>
             </form>
           </div>
