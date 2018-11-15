@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = (sequelize, DataTypes) =>
 {
 	const User = sequelize.define('User',{
@@ -22,6 +21,12 @@ module.exports = (sequelize, DataTypes) =>
 		},
 
 	});
+
+	User.associate = (models)=>
+	{
+		models.User.hasOne(models.Student);
+		models.User.hasOne(models.Staff);
+	}
 	return User
 
 };
