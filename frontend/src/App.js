@@ -4,6 +4,7 @@ import './App.css';
 import Home from './Views/Home.js'
 import Signup from './Views/Signup'
 import Login from './Views/Login'
+import Staff from './Views/StaffDash'
 
 class App extends Component {
   render() {
@@ -23,6 +24,11 @@ class App extends Component {
             <Route exact={true} path='/login' render={() => (
             <div className="App">
               <Login />
+            </div>
+            )}/>
+            <Route exact={true} path='/staff' render={() => (
+            <div className="App">
+              <Staff />
             </div>
             )}/>
           </div>
