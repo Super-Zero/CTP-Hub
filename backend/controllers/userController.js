@@ -11,10 +11,30 @@ exports.signUp = (req,res,next)=>
 	models.User.create({
 		email: req.body.email,
 		password: hashPassword,
-		typeOfUser: req.body.typeOfUser
+		typeOfUser: req.body.typeOfUser,
+		firstName: req.body.fName,
+		lastName: req.body.lName
 	})
 	.then((result)=>{
-		 res.status(200).json({'message':'User has been created!'})
+		if (user.dataValues.typeOfUser == "staff") {
+			models.Staff.create({
+				staffCode: req.body.code,
+			}).then((result)=>{
+				res.status(200).json({'message':'Staff has been created!'})
+			}).catch(err=>{
+				res.status(400).json({'message':'Staff Creation has been failed!','error':err})
+			});
+		}
+		else {
+			models.Student.create({
+				studentCode: req.body.code,
+			}).then((result)=>{
+				res.status(200).json({'message':'Student has been created!'})
+			}).catch(err=>{
+				res.status(400).json({'message':'Student Creation has been failed!','error':err})
+			});
+		}
+	res.status(200).json({'message':'Student has been created!'})
 	}).catch(err=>{
 		res.status(400).json({'message':'User Creation has been failed!',
 								'error':err})

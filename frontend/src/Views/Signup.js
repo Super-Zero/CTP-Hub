@@ -94,7 +94,10 @@ class SignupStudent extends Component {
       axios.post(`http://localhost:3001/users/signup`,{
         "email":this.state.eMail,
         "password":this.state.password,
-        "typeOfUser": this.state.studentSignUp? "student" : "staff"
+        "typeOfUser": this.state.studentSignUp? "student" : "staff",
+        "fName": this.state.fName,
+        "lName": this.state.lName,
+        "code" : this.state.studentSignUp? this.state.sCode : this.state.staffCode
       }).then(res=>
       {
         alert("Sucessful signing up!");
