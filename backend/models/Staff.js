@@ -2,13 +2,13 @@
 module.exports = (sequelize, DataTypes) =>
 {
 	const Staff = sequelize.define('Staff',{
-		name: { 
+		staffEmail: { 
 			type: DataTypes.STRING,
 			primaryKey: true
 			// TODO: Also custom check for CUNY emails
 
 		},
-		studentCode: {
+		staffCode: {
             type: DataTypes.INTEGER,
             allowNull: true,
         }

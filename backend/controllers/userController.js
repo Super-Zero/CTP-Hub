@@ -16,8 +16,9 @@ exports.signUp = (req,res,next)=>
 		lastName: req.body.lName
 	})
 	.then((result)=>{
-		if (user.dataValues.typeOfUser == "staff") {
+		if (req.body.typeOfUser === "staff") {
 			models.Staff.create({
+				staffEmail:req.body.email,
 				staffCode: req.body.code,
 			}).then((result)=>{
 				res.status(200).json({'message':'Staff has been created!'})
@@ -27,6 +28,7 @@ exports.signUp = (req,res,next)=>
 		}
 		else {
 			models.Student.create({
+				studentEmail:req.body.email,
 				studentCode: req.body.code,
 			}).then((result)=>{
 				res.status(200).json({'message':'Student has been created!'})
@@ -34,7 +36,6 @@ exports.signUp = (req,res,next)=>
 				res.status(400).json({'message':'Student Creation has been failed!','error':err})
 			});
 		}
-	res.status(200).json({'message':'Student has been created!'})
 	}).catch(err=>{
 		res.status(400).json({'message':'User Creation has been failed!',
 								'error':err})

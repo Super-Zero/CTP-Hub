@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) =>
 {
 	const Student = sequelize.define('Student',{
-		name: { 
+		studentEmail: { 
 			type: DataTypes.STRING,
 			primaryKey: true
 			// TODO: Also custom check for CUNY emails
@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) =>
         }
 
 		
-
 	});
 
 	Student.associate = (models)=>
 	{
 		models.Student.belongsTo(models.User);
+		models.Student.belongsTo(models.StudentJob);
 	}
 	return Student
 };
