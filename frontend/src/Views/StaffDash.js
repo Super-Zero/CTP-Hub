@@ -4,6 +4,7 @@ import logo from '../CTPHUB.png';
 import '../App';
 import axios from 'axios';
 import AppBar from '@material-ui/core/AppBar';
+import PrimarySearchAppBar from './MenuBar';
 
 class Button extends Component {
     render() {
@@ -41,10 +42,7 @@ class StaffDash extends Component {
     render() {
         return (
         <div className="Background">
-            <MenuBar/>
-            <SideBar />
-            <AppBar position="static">wefew
-            </AppBar>
+            <PrimarySearchAppBar/>
         </div>
     )}
     
