@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Card from './component/Card';
 class StudentDashboardMain extends Component {
 
   constructor(props){
@@ -11,8 +11,8 @@ class StudentDashboardMain extends Component {
   render() {
 
     return (
-      <div>
-        <p> It works!</p>
+      <div >
+        <Card title="Card Title"/>
       </div>
     );
   }
