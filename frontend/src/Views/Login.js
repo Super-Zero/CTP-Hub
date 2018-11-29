@@ -22,7 +22,7 @@ class InputForm extends Component {
           <div className="Col-25">
             {(!this.props.isPassword)? 
               <label htmlFor={fieldInputs[key]}>
-                {this.props.placeHolder[index]}
+                {this.props.placeHolder[0]}
               </label> 
               : 
               <label htmlFor={fieldInputs[key]}>
@@ -35,7 +35,7 @@ class InputForm extends Component {
               type="text" 
               onChange={this.props.field[key]} 
               name={key} 
-              placeholder={this.props.placeHolder[index]} 
+              placeholder={this.props.placeHolder[1]} 
               ref={key} id="inpF"/> 
             : 
             <input 
@@ -152,7 +152,7 @@ class LoginStudent extends Component {
       }
     }
 
-    let placeHolders = ["Enter your E-mail"]
+    let placeHolders = ["E-mail", "Enter your E-mail"]
     let passHolder = ["Enter your Password"]
     const studentSignUp = this.state.studentSignUp;
 
