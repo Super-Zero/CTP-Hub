@@ -5,6 +5,7 @@ import Home from './Views/Home.js'
 import Signup from './Views/Signup'
 import Login from './Views/Login'
 import Staff from './Views/StaffDash'
+import StudentDashboardMain from './studentDashboard/studentDashboardMain'
 
 class App extends Component {
   render() {
@@ -31,6 +32,8 @@ class App extends Component {
               <Staff />
             </div>
             )}/>
+
+            <Route path='/studentDashboard' component={StudentDashboardMain}/>
           </div>
         </BrowserRouter>
     );
