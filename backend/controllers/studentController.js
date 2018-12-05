@@ -4,8 +4,6 @@ const models = require('../models');
 // Post: Job is added on StudentJob and Job table.
 exports.addJob = (req,res,next)=>
 {
-	console.log(req)
-
 	const email = "test1@citymail.cuny.edu";
 	const jobTitle = "Software Engineer at Microsoft";
 	const notes = "First Round Passed. Second Round scheudled on Dec 18.";
@@ -40,10 +38,50 @@ exports.addJob = (req,res,next)=>
 
 }
 
-// Edit Note
 
 
 // See all jobs applied
 
+exports.allJobs = (req,res,next)=>
+{
+	const userData = req.userData;
 
+	models.StudentJob.findAll({
+	  where: {
+	    studentEmail: userData.email
+	  }
+	}).then(result=>{
+		return res.status(200).json(result);
+	}).catch(err=>{
+		return res.status(400).json({"error in finding allJobs":err});
+	})
+	
+
+}
+
+
+// Edit Note
+exports.editNote = (req,res,next)=>
+{
+	const userData = req.userData;
+	models.StudentJob.findOne({
+	  where: {
+	    studentEmail: userData.email,
+	    jobId: req.body.jobId
+	  }
+	}).then(result=>{
+		result.update({
+			notes: req.body.newNotes
+		}).then(result=>{
+			return res.status(200).json(result);
+		}).catch(err=>{
+			return res.status(400).json({"error in saving the new note":err});
+		})
+		
+	}).catch(err=>{
+		return res.status(400).json({"error in editing Notes":err});
+	})
+	
+
+}
 
