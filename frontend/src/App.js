@@ -12,28 +12,11 @@ class App extends Component {
     return (
         <BrowserRouter>
           <div>
-          <Route exact={true} path='/' render={() => (
-            <div className="App">
-              <Home />
-            </div>
-            )}/>
-            <Route exact={true} path='/signup' render={() => (
-            <div className="App">
-              <Signup />
-            </div>
-            )}/>
-            <Route exact={true} path='/login' render={() => (
-            <div className="App">
-              <Login />
-            </div>
-            )}/>
-            <Route exact={true} path='/staff' render={() => (
-            <div className="App">
-              <Staff />
-            </div>
-            )}/>
-
-            <Route path='/studentDashboard' component={StudentDashboardMain}/>
+            <Route exact={true} path='/' component={Home} />
+            <Route exact={true} path='/signup' component={Signup} />
+            <Route exact={true} path='/login' component = {Login} />
+            <Route exact={true} path='/staff' component ={Staff}/>
+            <Route exact={true} path='/student' component={StudentDashboardMain}/>
           </div>
         </BrowserRouter>
     );
