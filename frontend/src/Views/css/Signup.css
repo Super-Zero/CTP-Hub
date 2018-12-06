@@ -59,7 +59,7 @@ a:hover {
     padding-top: 3vh;
     margin-right: auto;
     margin-left: auto;
-    height: 21vh;
+    height: 23vh;
     width: 23.5vh;
     margin-bottom: 20px;
     display: block;
@@ -67,7 +67,7 @@ a:hover {
 
 .inpForm {
     margin-top: 2vh;
-    padding-top: 20vh;
+    padding-top: 15vh;
     content:"";
 }
 
@@ -81,7 +81,7 @@ a:hover {
     text-align: left;
     padding-left: 35px;
     float: left;
-    width: 33%;
+    width: 40%;
     margin-top: 1.7vh;
 }
 
