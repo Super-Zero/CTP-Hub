@@ -5,7 +5,8 @@ class StudentDashboardMain extends Component {
   constructor(props){
     super(props);
     this.state = {
-     
+     name: "",
+     jobs:""
     }
   }
   render() {

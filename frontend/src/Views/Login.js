@@ -4,15 +4,39 @@ Date: 11/7/2018
 */
 
 import React, { Component } from 'react';
+import {Route, Redirect} from 'react-router';
 import './css/Signup.css';
 import './css/Login.css';
 import logo from '../CTPHUB.png';
 import '../App';
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 
 
 
 class InputForm extends Component {
+
+
+  constructor(props){
+
+    super(props);
+    this.state = {
+      email:"",
+      password:"",
+    }
+  }
+
+  handleFormChange = (e)=>
+  {
+    const value = e.target.value
+    const name = e.target.name
+  }
+
+
+
+
+
+
   render() {
     let fieldInputs = this.props.field;
     let fieldNames = this.props.placeHolder
@@ -69,7 +93,7 @@ class StuStaffButton extends Component {
 
 
 class LoginStudent extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       fName : null,
@@ -104,7 +128,6 @@ class LoginStudent extends Component {
 
   handleSubmitForm(event) {
     event.preventDefault();
-    console.log(this.state.eMail);
     let canProceed = this.validateEmail(this.state.eMail);
     if (canProceed) {
       console.log("An Email has been sent to "+this.state.eMail+" which contains the instrucitons to activate you account.");
@@ -114,7 +137,23 @@ class LoginStudent extends Component {
       }).then(res=>
       {
         alert("Sucessful Login!");
-        console.log(res);
+        let token = res.data.token;
+        let decoded = jwt.decode(token);
+        localStorage.setItem("token",token);
+        this.forceUpdate();
+
+        if (decoded.typeOfUser === "student")
+        {  
+          this.props.history.push('/student')
+          return;
+        }
+        else
+        {
+          this.props.history.push('/')
+          return;
+        }
+
+
       }).catch(err=>
       {
         alert("Unsucessful Login!");
