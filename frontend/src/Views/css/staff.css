@@ -1,26 +1,107 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
 .Background {
+    display: grid;
+    grid-template-areas:
+    'menu header header header header header'
+    'menu add main main right right'
+    'menu footer footer footer footer footer';
     background-size: cover;
-    background-color: #20272e;
+    background-color: #e3e7ec;
     min-height: 100vh;
-    display: flex;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
     color: white;
 }
 
-.Menubar {
-    height: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #fafafa;
-}
-
 .Sidebar {
+    grid-area: menu;
     position: absolute;
     height: 100vh;
     display: block;
     float: left;
     width: 5%;
-    background-color: #111111;
+    background-color: #212121;
     color: #fafafa;
+}
+
+.Menubar {
+    grid-area: header;
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    float: left;
+    height: 70px;
+    background-color: #1abc9c;
+    color: #fafafa;
+}
+
+.Button {
+    grid-area: add;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin-top: 6vw;
+    margin-left: calc(6vw + 5%);
+    height: 10vw;
+    width: 10vw;
+    background-color: #e3e7ec;
+    border: 1px solid #b4b4b4;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#Image {
+    margin-top: 1vw;
+    height: 8vw;
+    width: 8vw;
+}
+
+.Studentsearch {
+    color: black;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+.Studentsearch-box {
+    position: absolute;
+    left: 25vw;
+    right: 25vw;
+    top: 25vh;
+    bottom: 25vh;
+    margin: auto;
+    background: white;
+}
+
+.Studentsearch-button {
+    display: inline-block;
+    font-size: 2vw;
+    background: white;
+    border: 1px solid #dedede;
+    width: 2.8vw;
+    height: 2.8vw;
+}
+
+.Studentsearch-heading {
+    display:inline-block;
+    width: 47.2vw;
+    padding-left: 20vw;
+    height: 2.4vw;
+    border-bottom: 1px solid #dedede;
 }
