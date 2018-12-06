@@ -5,6 +5,22 @@ html {
     box-sizing: inherit;
 }
 
+@font-face {
+    font-family: 'primetimeregular';
+    src: url('../fonts/primetime__personal_use_only-webfont.woff') format('.woff'),
+        url('../fonts/primetime__personal_use_only-webfont.woff2') format('.woff2'),
+        url('../fonts/primetime__personal_use_only-webfont.ttf') format('.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.Label {
+    font-family: 'primetime';
+    margin-left: 2%;
+    font-size: 1.5em;
+    margin-top: -1vh;
+}
 
 .Background {
     display: grid;
@@ -13,7 +29,7 @@ html {
     'menu add main main right right'
     'menu footer footer footer footer footer';
     background-size: cover;
-    background-color: #e3e7ec;
+    background-color: #323f47;
     min-height: 100vh;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
@@ -27,7 +43,8 @@ html {
     display: block;
     float: left;
     width: 5%;
-    background-color: #212121;
+    min-width: 75px;
+    background-color: #171d23;
     color: #fafafa;
 }
 
@@ -40,8 +57,9 @@ html {
     align-items: center;
     float: left;
     height: 70px;
-    background-color: #1abc9c;
+    background-color: #21272e;
     color: #fafafa;
+    filter: drop-shadow(0 0.5vh 0.5vh rgba(0,0,0,0.3));
 }
 
 .Button {
@@ -50,7 +68,7 @@ html {
     justify-content: center;
     align-items: center;
     float: left;
-    margin-top: 6vw;
+    margin-top: 7vw;
     margin-left: calc(6vw + 5%);
     height: 10vw;
     width: 10vw;
@@ -61,13 +79,12 @@ html {
 }
 
 #Image {
-    margin-top: 1vw;
-    height: 8vw;
-    width: 8vw;
+    height: 11vw;
+    width: 11vw;
 }
 
 .Studentsearch {
-    color: black;
+    color: #c4c4c4;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -80,28 +97,62 @@ html {
 }
 
 .Studentsearch-box {
+    background-color: #323f47;
     position: absolute;
-    left: 25vw;
-    right: 25vw;
-    top: 25vh;
-    bottom: 25vh;
+    left: 30vw;
+    right: 30vw;
+    top: 30vh;
+    bottom: 30vh;
     margin: auto;
-    background: white;
+    border-radius: 0.5em;
+}
+
+.Studentsearch-bar {
+    width: 100%;
+    height: 14%;
+    border-bottom: 1px solid rgb(80,93,111);
+    padding-bottom: 6%;
 }
 
 .Studentsearch-button {
+    color: #b3b3b3;
     display: inline-block;
     font-size: 2vw;
-    background: white;
-    border: 1px solid #dedede;
-    width: 2.8vw;
-    height: 2.8vw;
+    border: none;
+    width: 6%;
+    background: #323f47;
+    border-top-right-radius: 0.5em;
+    
 }
 
 .Studentsearch-heading {
     display:inline-block;
-    width: 47.2vw;
-    padding-left: 20vw;
-    height: 2.4vw;
-    border-bottom: 1px solid #dedede;
+    width: 93.8%;
+    padding-left: 39%;
+}
+
+.Studentsearch-input {
+    height: 55%;
+    padding-top: 11%;
+    margin-left: 4vw;
+}
+
+.Studentsearch-accept {
+    height: 31%;
+    background-color: #28343E;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.Studentsearch-acceptButton {
+    float: right;
+    margin-top: 5%;
+    margin-right: 5%;
+    width: 25%;
+    height: 40%;
+    background-color:#2ecc71;
+    border: none;
+    color: #fafafa;
+    font-size: 0.8em;
+    border-radius: 0.5em;
 }

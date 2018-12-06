@@ -9,8 +9,8 @@ import PrimarySearchAppBar from './MenuBar';
 class Button extends Component {
     render() {
         let arr = new Array(this.props.size).fill(0).map(()=>{
-            return <div onClick={console.log("FUNCTION")} className={this.props.className}>
-            <img onClick={console.log("FUNCTION")} id={this.props.imageId} src={this.props.image}/>
+            return <div className={this.props.className}>
+            <img id={this.props.imageId} src={this.props.image}/>
         </div>
         })
         return (<div onClick={this.props.handleButtonClick.bind(this)}>{arr}</div>)
@@ -21,6 +21,7 @@ class Bar extends Component {
     render() {
         return (
             <div className={this.props.className}>
+                {this.props.hasText? <div className="Label">{this.props.text}</div>:null}
             </div>
         )
     }
@@ -28,12 +29,20 @@ class Bar extends Component {
 
 class StudentSearch extends Component {
     render() {
-        return <div className="Studentsearch">
-            <div className="Studentsearch-box">
-            <div className="Studentsearch-heading">Add Student</div>
-            <button className="Studentsearch-button" onClick={this.props.handleButtonClick.bind(this)}>X</button>
-            </div>
-        </div>
+        return  <div className="Studentsearch">
+                    <div className="Studentsearch-box">
+                        <div className="Studentsearch-bar">
+                            <div className="Studentsearch-heading">Add Student</div>
+                            <button className="Studentsearch-button" onClick={this.props.handleButtonClick.bind(this)}>X</button>
+                        </div>
+                        <div className="Studentsearch-input">
+                            <div className="Studentsearch-name">Student Name</div>
+                        </div>
+                        <div className="Studentsearch-accept">
+                            <button className="Studentsearch-acceptButton">Add Student</button>
+                        </div>
+                    </div>
+                </div>
     }
 }
 class StaffDash extends Component {
@@ -55,8 +64,8 @@ class StaffDash extends Component {
             <StudentSearch handleButtonClick={this.toggleAddStudentMenu.bind(this)}/>: null
         }
         <Bar className="Sidebar"/>
-        <Bar className="Menubar"/> 
-        <Button className="Button" handleButtonClick={this.toggleAddStudentMenu.bind(this)} imageId= "Image" image="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-07-512.png"/>
+        <Bar className="Menubar" hasText={true} text="CTP_HUB"/> 
+        <Button className="Button" handleButtonClick={this.toggleAddStudentMenu.bind(this)} imageId= "Image" image="http://pngimg.com/uploads/plus/plus_PNG16.png"/>
         </div>
     )}
     
