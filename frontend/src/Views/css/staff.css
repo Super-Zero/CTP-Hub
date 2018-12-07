@@ -5,6 +5,7 @@ html {
     box-sizing: inherit;
 }
 
+
 @font-face {
     font-family: 'primetimeregular';
     src: url('../fonts/primetime__personal_use_only-webfont.woff') format('.woff'),
@@ -20,16 +21,33 @@ html {
     margin-left: 2%;
     font-size: 1.5em;
     margin-top: -1vh;
+    width: 55%;
+}
+
+.Inp {
+    font-size: 0.7em;
+    margin-left: 8%;
+    width: 20vw;
+    color: #dedede;
+    height: 25px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 19px;
+    border: 1px solid #2ecc71;
+    border-radius: 0.8em;
 }
 
 .Background {
     display: grid;
     grid-template-areas:
-    'menu header header header header header'
-    'menu add main main right right'
-    'menu footer footer footer footer footer';
+    'menu header header header header header header header'
+    'menu a  a  b b main right right'
+    'menu a  a  b b footer footer footer';
+    grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr 0.9fr;
+    grid-template-rows: 70px 1fr 1fr;
     background-size: cover;
-    background-color: #323f47;
+    background-color: #232834;
     min-height: 100vh;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
@@ -62,97 +80,47 @@ html {
     filter: drop-shadow(0 0.5vh 0.5vh rgba(0,0,0,0.3));
 }
 
-.Button {
-    grid-area: add;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: left;
-    margin-top: 7vw;
-    margin-left: calc(6vw + 5%);
-    height: 10vw;
-    width: 10vw;
-    background-color: #e3e7ec;
-    border: 1px solid #b4b4b4;
-    border-radius: 15px;
-    text-align: center;
+.SearchResults {
+    grid-area: a;
+    border-right: 1px solid rgb(80,93,111);
 }
 
-#Image {
-    height: 11vw;
-    width: 11vw;
+.SearchResults-text {
+    padding-top: 30px;
+    padding-left: 40px;
 }
 
-.Studentsearch {
-    color: #c4c4c4;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: rgba(0,0,0, 0.5);
+.StudentCards {
+    height: 18vh;
+    width: 27vw;
+    background: #2e3445;
+    padding-top: 1vh;
+    margin-bottom: 10h;
 }
 
-.Studentsearch-box {
-    background-color: #323f47;
-    position: absolute;
-    left: 30vw;
-    right: 30vw;
-    top: 30vh;
-    bottom: 30vh;
-    margin: auto;
-    border-radius: 0.5em;
+.Cards {
+    color:#c4c4c4;
+    margin-bottom: 3.6vh;
 }
 
-.Studentsearch-bar {
-    width: 100%;
-    height: 14%;
+.Heading {
+    padding-left: 2vw;
+    font-size: 1em;
     border-bottom: 1px solid rgb(80,93,111);
-    padding-bottom: 6%;
 }
 
-.Studentsearch-button {
-    color: #b3b3b3;
-    display: inline-block;
-    font-size: 2vw;
-    border: none;
-    width: 6%;
-    background: #323f47;
-    border-top-right-radius: 0.5em;
+.Text {
+    padding-left: 2vw;
     
 }
 
-.Studentsearch-heading {
-    display:inline-block;
-    width: 93.8%;
-    padding-left: 39%;
-}
-
-.Studentsearch-input {
-    height: 55%;
-    padding-top: 11%;
-    margin-left: 4vw;
-}
-
-.Studentsearch-accept {
-    height: 31%;
-    background-color: #28343E;
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
-}
-
-.Studentsearch-acceptButton {
-    float: right;
-    margin-top: 5%;
-    margin-right: 5%;
-    width: 25%;
-    height: 40%;
-    background-color:#2ecc71;
-    border: none;
+.Logout {
+    margin-right: 2vw;
+    height: 35px;
+    width: 100px;
+    background-color: #2ecc71;
     color: #fafafa;
-    font-size: 0.8em;
+    border: none;
+    font-size: 0.7em;
     border-radius: 0.5em;
 }

@@ -92,7 +92,27 @@ exports.get = (req,res,next)=>
 	models.User.findAll().then(result=>
 	{
 		res.status(200).json(result);
-	})
+	}).catch(err=>
+	{
+		console.log(err)
+		res.status(400).json({'error':err})
+	});
+}
+
+exports.getStudents = (req,res,next)=>
+{
+	models.User.findAll({
+		where: {
+			typeOfUser: 'student'
+		}
+	}).then(result=>
+	{
+		console.log("get request sent")
+		res.status(200).json(result);
+	}).catch(err=>
+	{
+		res.status(400).json({'error':err})
+	});
 }
 
 

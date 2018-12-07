@@ -92,7 +92,20 @@ a:hover {
 }
 
 
-input[type=text], input[type="password"], select, textarea {
+select, textarea {
+    color: #dedede;
+    font-size: calc(2px + 1.5vmin);
+    height: 0.7vh;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid white;
+    width: 70%;
+    padding: 1.2vh;
+    resize: vertical;
+}
+
+.InputForm {
     color: #dedede;
     font-size: calc(2px + 1.5vmin);
     height: 0.7vh;

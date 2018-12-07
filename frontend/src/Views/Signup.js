@@ -48,6 +48,7 @@ class InputForm extends Component {
           <div className="Col-75">
           {(!this.props.isPassword)? 
             <input 
+              className="InputForm"
               type="text" 
               onChange={this.props.field[key]} 
               name={key} 
@@ -56,6 +57,7 @@ class InputForm extends Component {
               id="inpF"/> 
             : 
             <input 
+              className="InputForm"
               type="password" 
               onChange={this.props.field[key]} 
               name={key} 
@@ -202,7 +204,7 @@ class SignupStudent extends Component {
             comp={studentSignUp? "":"signup"} 
             handleButtonClick={this.handleButtonClick} 
             name="Staff"/>
-          <div classname="inpForm">
+          <div classname="InputForm inpForm">
           <form onSubmit={this.handleSubmitForm}>
             <InputForm 
               field={inputFields} 

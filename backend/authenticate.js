@@ -27,8 +27,9 @@ exports.checkStaff = (req,res,next)=>{
         if(decoded['typeOfUser']!="staff") throw "User Logged in is not a staff!";
         next();
     } catch (error) {
+        console.log(req.headers.authorization)
         return res.status(401).json({
-            message: 'Auth failed!',
+            message: 'Staff Auth failed!',
             error: error
         });
     }

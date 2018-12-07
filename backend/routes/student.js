@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const models = require('../models');
 const studentController = require("../controllers/studentController");
+const staffController = require("../controllers/staffController");
 const checkAuth = require("../authenticate");
 
 /* GET users listing. */

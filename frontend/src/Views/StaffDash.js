@@ -3,8 +3,7 @@ import './css/staff.css';
 import logo from '../CTPHUB.png';
 import '../App';
 import axios from 'axios';
-import AppBar from '@material-ui/core/AppBar';
-import PrimarySearchAppBar from './MenuBar';
+import Fuse from "fuse.js";
 
 class Button extends Component {
     render() {
@@ -17,58 +16,101 @@ class Button extends Component {
     }
 }
 
-class Bar extends Component {
+class StudentCards extends Component {
     render() {
-        return (
-            <div className={this.props.className}>
-                {this.props.hasText? <div className="Label">{this.props.text}</div>:null}
-            </div>
-        )
+        let cards = this.props.results.slice(0,4).map((name) => {
+            return(
+                <div className="Cards">
+                    <div className="StudentCards">
+                    <div className="Heading">{name.firstName+ "   " + name.lastName}</div>
+                    <p className="Text">{name.email}</p>
+                </div>
+            </div>)
+        })
+        
+        return(<div>{cards}</div>)
     }
 }
 
-class StudentSearch extends Component {
-    render() {
-        return  <div className="Studentsearch">
-                    <div className="Studentsearch-box">
-                        <div className="Studentsearch-bar">
-                            <div className="Studentsearch-heading">Add Student</div>
-                            <button className="Studentsearch-button" onClick={this.props.handleButtonClick.bind(this)}>X</button>
-                        </div>
-                        <div className="Studentsearch-input">
-                            <div className="Studentsearch-name">Student Name</div>
-                        </div>
-                        <div className="Studentsearch-accept">
-                            <button className="Studentsearch-acceptButton">Add Student</button>
-                        </div>
-                    </div>
-                </div>
-    }
-}
 class StaffDash extends Component {
     constructor() {
         super()
         this.state ={
-            showAddStudentMenu: false
+            loaded: false,
+            students: [],
+            searchResults: []
         }
         this.toggleAddStudentMenu = this.toggleAddStudentMenu.bind(this)
+        this.getStudents = this.getStudents.bind(this)
+        this.handleLogout = this.handleLogout.bind(this)
+        this.onSearchChange = this.onSearchChange.bind(this)
     }
+
     toggleAddStudentMenu = () => {
         console.log("Button")
+        this.getStudents()
         this.setState({showAddStudentMenu: !this.state.showAddStudentMenu})
     }
+
+    getStudents() {
+        console.log("STATE IS SET")
+        return axios.get('http://localhost:3001/users/students').then((res) => {
+            this.setState({students: res.data})
+            }
+        )
+    }
+
+    componentDidMount() {
+        this.getStudents()
+    }
+
+    onSearchChange = (event) => {
+        var options = {
+            shouldSort: true,
+            threshold: 0.6,
+            location: 0,
+            distance: 100,
+            maxPatternLength: 32,
+            minMatchCharLength: 1,
+            keys: [
+              "email",
+              "firstName",
+              "lastName"
+          ]
+          };
+        var fuse = new Fuse(this.state.students, options); // "list" is the item array
+        var result = fuse.search(event.target.value);
+        this.setState({searchResults : result})
+        this.setState({loaded: true})
+        this.forceUpdate();
+    } 
+
+    handleLogout() {
+        this.props.history.push('/login')
+    }
+
     render() {
         return (
         <div className="Background">
-        {this.state.showAddStudentMenu?
-            <StudentSearch handleButtonClick={this.toggleAddStudentMenu.bind(this)}/>: null
-        }
-        <Bar className="Sidebar"/>
-        <Bar className="Menubar" hasText={true} text="CTP_HUB"/> 
-        <Button className="Button" handleButtonClick={this.toggleAddStudentMenu.bind(this)} imageId= "Image" image="http://pngimg.com/uploads/plus/plus_PNG16.png"/>
+        <div className="Sidebar"></div>
+        <div className="Menubar" >
+            <div className="Label">CTP_HUB
+            <input 
+                className="Inp"
+                type="text" 
+                onChange={this.onSearchChange}
+                placeholder="Add Student"/>
+            </div>
+            <button className="Logout" onClick={this.handleLogout}>Log Out</button>
+        </div>
+        <div className="SearchResults">
+            <div className="SearchResults-text">
+            <StudentCards results={this.state.searchResults}/>
+            </div>
+        </div>
+        {console.log(this.state.searchResults)}
         </div>
     )}
-    
 }
 
 export default StaffDash;

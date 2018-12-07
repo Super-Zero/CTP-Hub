@@ -32,11 +32,6 @@ class InputForm extends Component {
     const name = e.target.name
   }
 
-
-
-
-
-
   render() {
     let fieldInputs = this.props.field;
     let fieldNames = this.props.placeHolder
@@ -56,6 +51,7 @@ class InputForm extends Component {
           <div className="Col-75">
           {(!this.props.isPassword)? 
             <input 
+              className="InputForm"
               type="text" 
               onChange={this.props.field[key]} 
               name={key} 
@@ -63,6 +59,7 @@ class InputForm extends Component {
               ref={key} id="inpF"/> 
             : 
             <input 
+              className="InputForm"
               type="password" 
               onChange={this.props.field[key]} 
               name={key} 
@@ -163,7 +160,6 @@ class LoginStudent extends Component {
     } 
   }
   
-
   handleButtonClick = (name) => {
     const sSignUp = this.state.studentSignUp;
     if (name === "Staff" && sSignUp === true) {
