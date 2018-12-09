@@ -44,8 +44,9 @@ exports.addJob = (req,res,next)=>
 
 exports.allJobs = (req,res,next)=>
 {
-	const userData = req.userData;
 
+	const userData = req.userData;
+	console.log(userData)
 	models.StudentJob.findAll({
 	  where: {
 	    studentEmail: userData.email

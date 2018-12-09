@@ -10,7 +10,7 @@ class Home extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            CTP_Hub is under development . . .
+            Welcome to CTP_Hub!
           </p>
         </header>
       </div>
