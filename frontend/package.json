@@ -8,11 +8,8 @@
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
-<<<<<<< HEAD
     "fuse.js": "^3.3.0",
-=======
     "babel-runtime": "^6.26.0",
->>>>>>> 704e8bb7cc4fcc120c7a9f7829454da0dc51d080
     "jsonwebtoken": "^8.4.0",
     "material-ui": "^1.0.0-beta.47",
     "react": "^16.5.2",
