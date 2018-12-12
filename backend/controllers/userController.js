@@ -99,6 +99,22 @@ exports.get = (req,res,next)=>
 	});
 }
 
+exports.getAStudent = (req,res,next)=>
+{
+	models.User.findAll({
+		where : {
+			email: req.query.email
+		}
+	}).then(result=>
+	{
+		res.status(200).json(result);
+	}).catch(err=>
+	{
+		console.log(err)
+		res.status(400).json({'error':err})
+	});
+}
+
 exports.getStudents = (req,res,next)=>
 {
 	models.User.findAll({

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) =>
             type: DataTypes.INTEGER,
             primaryKey: true,
         },
-        notes:{
+        notes: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

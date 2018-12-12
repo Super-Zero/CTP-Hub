@@ -16,6 +16,11 @@ html {
 
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 .Label {
     font-family: 'primetime';
     margin-left: 2%;
@@ -43,11 +48,12 @@ html {
     grid-template-areas:
     'menu header header header header header header header'
     'menu a  a  b b main right right'
-    'menu a  a  b b footer footer footer';
+    'menu a  a  b b footer footer footer'
+    'menu f  f  f  f  f    f f' ;
     grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr 0.9fr;
     grid-template-rows: 70px 1fr 1fr;
     background-size: cover;
-    background-color: #232834;
+    background-color: #202630;
     min-height: 100vh;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
@@ -82,12 +88,21 @@ html {
 
 .SearchResults {
     grid-area: a;
+    height:calc(100vh - 70px);
     border-right: 1px solid rgb(80,93,111);
+    overflow: auto;
 }
 
 .SearchResults-text {
     padding-top: 30px;
     padding-left: 40px;
+}
+
+.AddedStudents {
+    grid-area: b;
+    height:calc(100vh - 70px);
+    border-right: 1px solid rgb(80,93,111);
+    overflow: auto;
 }
 
 .StudentCards {
@@ -104,9 +119,31 @@ html {
 }
 
 .Heading {
+    width: 90%;
     padding-left: 2vw;
     font-size: 1em;
     border-bottom: 1px solid rgb(80,93,111);
+    float: left;
+}
+
+.CardButton {
+    border: none;
+    color: #fafafa;
+    margin-top: -2%;
+    width: 10%;
+    height: 33%;
+    float: left;
+    text-align: center;
+}
+
+.AddButton {
+    background: #3498db;
+    font-size: 1.3em;
+}
+
+.CloseButton {
+    background: #e67e22;
+    font-size: 0.9em;
 }
 
 .Text {

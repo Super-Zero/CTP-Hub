@@ -137,6 +137,7 @@ class LoginStudent extends Component {
         let token = res.data.token;
         let decoded = jwt.decode(token);
         localStorage.setItem("token",token);
+        localStorage.setItem("email",this.state.eMail)
         this.forceUpdate();
 
         if (decoded.typeOfUser === "student")
