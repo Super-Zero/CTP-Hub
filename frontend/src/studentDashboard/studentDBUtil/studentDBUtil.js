@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3001/student";
 
 axios.interceptors.request.use((config)=>{  
     const token = localStorage.getItem("token");
@@ -11,14 +11,10 @@ axios.interceptors.request.use((config)=>{
 
 
 
-export {getMenuStore}
-async function getMenuStore()
+export {getAllJobs}
+async function getAllJobs()
 {
-  const token = localStorage.getItem('token');
-  const decoded = jwt.decode(token);
 
-  const storeName = await axios.get(baseUrl+'/manager/getStoreName');
-  
-  return axios.get(baseUrl+'/store/'+storeName.data+'/getAllMenu');
+  return axios.get(baseUrl+'/allJobs');
 
 }

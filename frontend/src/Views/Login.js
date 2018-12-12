@@ -4,7 +4,7 @@ Date: 11/7/2018
 */
 
 import React, { Component } from 'react';
-import {Route, Redirect} from 'react-router';
+import Route from 'react-router';
 import './css/Signup.css';
 import './css/Login.css';
 import logo from '../CTPHUB.png';
@@ -134,6 +134,7 @@ class LoginStudent extends Component {
       }).then(res=>
       {
         alert("Sucessful Login!");
+        this.props.handleLogIn();
         let token = res.data.token;
         let decoded = jwt.decode(token);
         localStorage.setItem("token",token);
@@ -191,7 +192,6 @@ class LoginStudent extends Component {
     let placeHolders = ["E-mail", "Enter your E-mail"]
     let passHolder = ["Enter your Password"]
     const studentSignUp = this.state.studentSignUp;
-
     return (
       <div className="App">
       <header className="Login-header">

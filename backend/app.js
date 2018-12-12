@@ -11,6 +11,7 @@ var students = require('./routes/student');
 var staff = require('./routes/staff');
 
 var app = express();
+var cors = require('cors')
 
 
 // uncomment after placing your favicon in /public
@@ -22,11 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle CORS
-app.use((req, res, next)=>{
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
-  next();
-});
+app.use(cors())
+
 
 app.use('/', index);
 app.use('/users', users);
