@@ -46,10 +46,10 @@ html {
 .Background {
     display: grid;
     grid-template-areas:
-    'menu header header header header header header header'
-    'menu a  a  b b main right right'
-    'menu a  a  b b footer footer footer'
-    'menu f  f  f  f  f    f f' ;
+    'menu header header header header header header '
+    'menu a  a  b b c c '
+    'menu a  a  b b c c '
+    'menu f  f  f  f  f    f ' ;
     grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr 0.9fr;
     grid-template-rows: 70px 1fr 1fr;
     background-size: cover;
@@ -96,6 +96,47 @@ html {
 .SearchResults-text {
     padding-top: 30px;
     padding-left: 40px;
+}
+
+.StatusBar {
+    grid-area: c;
+    background-color: #171d23;
+    overflow: auto;
+    height:calc(100vh - 70px);
+}
+
+.Status {
+    color: #dedede;
+    justify-content: center;
+}
+
+.StatusCard {
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 5%;
+    padding: 2.5% 5%;
+    height: 13vh;
+    width: 80%;
+    font-size: 0.7em;
+    background: #202630;
+}
+
+.Email {
+    font-weight: bold;
+    color: #f1c40f;
+    display: inline-block;
+}
+
+.Company {
+    font-weight: bold;
+    font-style: italic;
+    display: inline-block;
+}
+
+.Job {
+    font-weight: bold;
+    color: #2ecc71;
+    display: inline-block;
 }
 
 .AddedStudents {
@@ -158,6 +199,7 @@ html {
     background-color: #2ecc71;
     color: #fafafa;
     border: none;
-    font-size: 0.7em;
+    font-size: 0.75em;
     border-radius: 0.5em;
 }
+

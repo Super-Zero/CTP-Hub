@@ -26,6 +26,10 @@ class InputForm extends Component {
     }
   }
 
+  componentDidMount() {
+    document.title = "Login"
+  }
+
   handleFormChange = (e)=>
   {
     const value = e.target.value

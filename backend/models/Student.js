@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) =>
 	Student.associate = (models)=>
 	{
 		models.Student.belongsTo(models.User);
-		models.Student.belongsTo(models.StudentJob);
+		models.Student.hasMany(models.StudentJob);
 	}
 	return Student
 };

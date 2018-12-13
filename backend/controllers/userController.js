@@ -49,7 +49,6 @@ exports.login = (req,res, next)=>
 		where:{email:req.body.email}
 	}).then(user=>
 	{	
-		console.log(user)
 		if (user===null)
 			res.status(400).json({'error':'User not found!'});
 		else
@@ -82,7 +81,6 @@ exports.login = (req,res, next)=>
 			});
 	}).catch(err=>
 	{
-		console.log(err)
 		res.status(400).json({'error':err})
 	});
 }
@@ -94,7 +92,6 @@ exports.get = (req,res,next)=>
 		res.status(200).json(result);
 	}).catch(err=>
 	{
-		console.log(err)
 		res.status(400).json({'error':err})
 	});
 }
@@ -110,7 +107,6 @@ exports.getAStudent = (req,res,next)=>
 		res.status(200).json(result);
 	}).catch(err=>
 	{
-		console.log(err)
 		res.status(400).json({'error':err})
 	});
 }
@@ -123,7 +119,6 @@ exports.getStudents = (req,res,next)=>
 		}
 	}).then(result=>
 	{
-		console.log("get request sent")
 		res.status(200).json(result);
 	}).catch(err=>
 	{

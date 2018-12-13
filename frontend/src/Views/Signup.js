@@ -153,6 +153,10 @@ class SignupStudent extends Component {
     }
   }
 
+  componentDidMount() {
+    document.title = "Signup"
+  }
+
   render() {
     const inputFields = {
       "firstname" : (event) => {

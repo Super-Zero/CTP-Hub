@@ -5,14 +5,18 @@ import '../App';
 import axios from 'axios';
 import Fuse from "fuse.js";
 
-class Button extends Component {
+class StatusCards extends Component {
     render() {
-        let arr = new Array(this.props.size).fill(0).map(()=>{
-            return <div className={this.props.className}>
-            <img id={this.props.imageId} src={this.props.image}/>
-        </div>
+        let cards = this.props.results.map((status) => {
+            return (
+                <div className="StatusCard">
+                    <div className="Email">{status.email+" "}</div> applied to <div className="Company">{status.companyName}</div> for <div className="Job">{status.jobTitle}</div> position.
+                </div>
+            )
         })
-        return (<div onClick={this.props.handleButtonClick.bind(this)}>{arr}</div>)
+        return (
+            <div className="Status">{cards}</div>
+        )
     }
 }
 
@@ -41,9 +45,9 @@ class StaffDash extends Component {
             students: [],
             searchResults: [],
             addedStudents: [],
-            emailChecks: []
+            emailChecks: [],
+            applications: []
         }
-        this.toggleAddStudentMenu = this.toggleAddStudentMenu.bind(this)
         this.getStudents = this.getStudents.bind(this)
         this.getAddedStudents = this.getAddedStudents.bind(this)
         this.handleLogout = this.handleLogout.bind(this)
@@ -57,8 +61,8 @@ class StaffDash extends Component {
             params : {
                 staffEmail: localStorage.getItem("email")}
         }).then(res => {
-            res.data.forEach((student) => {
-                axios.get(`http://localhost:3001/users/getastudent?email=${student.studentEmail}`
+            res.data.forEach((stud) => {
+                axios.get(`http://localhost:3001/users/getastudent?email=${stud.studentEmail}`
                 ).then(res => {
                     var name = {
                         "email": res.data[0].email,
@@ -67,40 +71,72 @@ class StaffDash extends Component {
                     }
                     this.setState({addedStudents: this.state.addedStudents.concat(name)})
                     this.setState({emailChecks: this.state.emailChecks.concat(name.email)})
+                }).then((check)=>{
+                    var studEmails = this.state.emailChecks
+                    studEmails.forEach((student)=>{
+                        axios.get(`http://localhost:3001/student/alljobs?studentEmail=${student}`)
+                        .then((res)=> {
+                            res.data.forEach((job) => {
+                                axios.get(`http://localhost:3001/student/ajob?jobId=${job.jobId}`, {
+                                  "jobId":job.jobId
+                                })
+                                .then(res => {
+                                  var aJob = {
+                                      "email" : job.studentEmail,
+                                      "jobId": res.data[0].jobId,
+                                      "jobTitle" : res.data[0].jobTitle,
+                                      "companyName" : res.data[0].companyName,
+                                      "createdAt" : Date(res.data[0].createdAt)
+                                  }
+                                  this.setState({applications: this.state.applications.concat(aJob)})
+                                })
+                            })
+                        })
+                    })
                 })
             })
-            console.log("RESULT"+JSON.stringify(res.data[0].studentEmail))
             //this.setState({addedStudents: res.data})
         })
     }
 
-    toggleAddStudentMenu = () => {
-        console.log("Button")
-        this.getStudents()
-        this.setState({showAddStudentMenu: !this.state.showAddStudentMenu})
-    }
-
     handleAddButton(name) {
-        console.log("EMAIL: "+this.state.emailChecks.indexOf(name.email))
-        console.log(this.state.emailChecks)
         if (this.state.emailChecks.indexOf(name.email) === -1) {
-            console.log(this.state.emailChecks)
             this.setState({emailChecks: this.state.emailChecks.concat(name.email)})
             this.setState({addedStudents: this.state.addedStudents.concat(name)})
             axios.post("http://localhost:3001/staff/addStudent", {
                 "staffEmail": localStorage.getItem("email"),
                 "studentEmail": name.email
-            })
+            }).then((check)=>{
+                    var studEmails = this.state.emailChecks
+                    studEmails.forEach((student)=>{
+                        axios.get(`http://localhost:3001/student/alljobs?studentEmail=${student}`)
+                        .then((res)=> {
+                            res.data.forEach((job) => {
+                                axios.get(`http://localhost:3001/student/ajob?jobId=${job.jobId}`, {
+                                "jobId":job.jobId
+                                })
+                                .then(res => {
+                                var aJob = {
+                                    "email" : job.studentEmail,
+                                    "jobId": res.data[0].jobId,
+                                    "jobTitle" : res.data[0].jobTitle,
+                                    "companyName" : res.data[0].companyName,
+                                    "createdAt" : Date(res.data[0].createdAt)
+                                }
+                                this.setState({applications: this.state.applications.concat(aJob)})
+                                })
+                            })
+                        })
+                    })
+                })
         }
     }
 
     handleDeleteButton(name) {
         axios.post(`http://localhost:3001/staff/deleteStudent?staffEmail=${localStorage.getItem("email")}&studentEmail=${name.email}`)
         .then( (res)=> {
-            this.setState({addedStudents: [], emailChecks: []})    
+            this.setState({addedStudents: [], emailChecks: [], applications: []})    
             this.getAddedStudents()
-            console.log(this.state.addedStudents)
-            console.log("FUCK ME")
         }).catch(error => {
             console.log(error);
         });
@@ -157,7 +193,19 @@ class StaffDash extends Component {
                 onChange={this.onSearchChange}
                 placeholder="Student Lookup"/>
             </div>
-            <button className="Logout" onClick={this.handleLogout}>Log Out</button>
+            { !this.props.isLoggedIn ? 
+                (<button className="Logout" onClick={()=>{
+                localStorage.clear(); 
+                this.handleLogout(); 
+                this.props.history.push('/login')}}>
+                Logout
+                </button>)
+                :
+                (<button className="Logout" onClick={()=>{
+                this.props.history.push('/login')}}>
+                Login
+                </button>)
+            }
         </div>
         <div className="SearchResults">
             <div className="SearchResults-text">
@@ -176,9 +224,13 @@ class StaffDash extends Component {
                     handleBClick={this.handleDeleteButton} 
                     maxResults={10}
                     className="CardButton CloseButton"
-                    text="X"/>
+                    text="X"/> 
             </div>
         
+        </div>
+        <div className="StatusBar">
+            <StatusCards results = {this.state.applications}/>
+            
         </div>
         </div>
     )}

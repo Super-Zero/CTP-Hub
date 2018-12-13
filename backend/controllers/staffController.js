@@ -4,10 +4,8 @@ const models = require('../models');
 // Post: Job is added on StudentJob and Job table.
 exports.addStudent = (req,res,next)=>
 {
-	//console.log(req, res)
 	const staffEmail = req.body.staffEmail;
 	const studentEmail = req.body.studentEmail;
-	console.log(req.body.staffEmail)
 // If not create new
 	models.StaffStudent.create({
 		staffEmail: staffEmail,
@@ -31,7 +29,6 @@ exports.getStaffStudents = (req,res,next)=>
 		res.status(200).json(result);
 	}).catch(err=>
 	{
-		console.log(req)
 		res.status(400).json({'error':err})
 	});
 }
@@ -43,7 +40,6 @@ exports.getAllStaffStudents = (req,res,next)=>
 		res.status(200).json(result);
 	}).catch(err=>
 	{
-		console.log(req)
 		res.status(400).json({'error':err})
 	});
 }

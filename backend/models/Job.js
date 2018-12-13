@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) =>
     jobTitle: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    companyName: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 	});
 	Job.associate = (models)=>
 	{
-		models.Job.belongsTo(models.StudentJob);
+		models.Job.hasMany(models.StudentJob);
 	}
 	
 	return Job;

@@ -10,12 +10,18 @@ const checkAuth = require("../authenticate");
 // router.post('/addJob',checkAuth.checkStudent,studentController.addJob);
 
 //Without Auth
-router.post('/addJob',studentController.addJob);
+router.post('/addJob', studentController.addJob);
+router.post('/newjob', studentController.newJob)
+router.post('/deletejob', studentController.fuckme)
+
 
 // Get all Jobs for student
-router.get('/allJobs',checkAuth.checkStudent,studentController.allJobs);
+router.get('/allJobs', studentController.allJobs);
+// Get all Jobs
+router.get('/everyJob', studentController.everyJob);
+router.get('/ajob', studentController.aJob)
 
 // Edit Job Note
-router.post('/editNote',checkAuth.checkStudent,studentController.editNote);
+router.post('/editNote', checkAuth.checkStudent,studentController.editNote);
 
 module.exports = router;

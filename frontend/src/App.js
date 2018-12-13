@@ -42,8 +42,21 @@ class App extends Component {
         <Router history={history}>
           <div>
             <Route exact={true} path='/signup' component={Signup} />
-            <Route exact={true} path='/login' render = {(props)=>(<Login {...props} handleLogIn={this.handleLogIn}  />)} />
-            <AppBar position="static" style={{ flex: 1 }}>
+            <Route exact={true} path='/staff' component ={Staff}/>
+            <Route exact={true} path='/login' render = {(props)=>(<Login {...props} 
+              handleLogIn={this.handleLogIn}  
+              isLoggedIn={this.state.isLoggedIn}/>)} />
+            <Route exact={true} path='/' component={Home} />
+            <Route exact={true} path='/student' component={StudentDashboardMain}/>
+          </div>
+        </Router>
+    );
+  }
+}
+
+export default App;
+/*
+<AppBar position="static" style={{ flex: 1 }}>
               <Toolbar>
               <div>
               { isLoggedIn ? 
@@ -58,13 +71,4 @@ class App extends Component {
               </div>
               </Toolbar>
              </AppBar>
-            <Route exact={true} path='/' component={Home} />
-            <Route exact={true} path='/staff' component ={Staff}/>
-            <Route exact={true} path='/student' component={StudentDashboardMain}/>
-          </div>
-        </Router>
-    );
-  }
-}
-
-export default App;
+*/

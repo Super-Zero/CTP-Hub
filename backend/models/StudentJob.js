@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) =>
 
     StudentJob.associate = (models)=>
     {
-        models.StudentJob.hasMany(models.Student);
-        models.StudentJob.hasMany(models.Job);
+        models.StudentJob.hasOne(models.Student);
+        models.StudentJob.hasOne(models.Job);
     }
 
 	
