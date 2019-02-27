@@ -36,10 +36,10 @@ class InputForm extends Component {
         return (
         <div className="Row">
           <div className="Col-25">
-            {(!this.props.isPassword)? 
+            {(!this.props.isPassword)?
               <label htmlFor={fieldInputs[key]}>
                 {fieldNames[index]}
-              </label> 
+              </label>
               : 
               <label htmlFor={fieldInputs[key]}>
                 {key}
@@ -77,7 +77,12 @@ class InputForm extends Component {
 
 class StuStaffButton extends Component {
   render() {
-    return <div className="S-button" id={this.props.comp} onClick={() => this.props.handleButtonClick(this.props.name)}>{this.props.student}</div>
+    return <div 
+      className="S-button" 
+      id={this.props.comp} 
+      onClick={() => this.props.handleButtonClick(this.props.name)}>
+        {this.props.student}
+      </div>
   }
 }
 

@@ -81,6 +81,8 @@ class StaffDash extends Component {
                                   "jobId":job.jobId
                                 })
                                 .then(res => {
+                                    console.log("Name incoming")
+                                    console.log(job)
                                   var aJob = {
                                       "email" : job.studentEmail,
                                       "jobId": res.data[0].jobId,

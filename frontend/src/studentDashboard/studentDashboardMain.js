@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import JobCard from './component/jobCard';
+//import JobCard from './component/jobCard';
 import '../Views/css/staff.css';
-import {getAllJobs} from './studentDBUtil/studentDBUtil';
-import Grid from '@material-ui/core/Grid';
+//import {getAllJobs} from './studentDBUtil/studentDBUtil';
+//import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import Fuse from "fuse.js";
 
@@ -13,7 +13,8 @@ class StudentCards extends Component {
           return(
               <div className="Cards">
                   <div className="StudentCards">
-                      <div className="Heading">{name.jobTitle}</div>
+                      <div className="Heading">{name.jobTitle}
+                      </div>
                       <button className={this.props.className} onClick={()=> this.props.handleBClick(name)}>{this.props.text}</button>
                       <p className="Text">{name.companyName}<br/>{`Job ID : ` + name.jobId}</p>
                   </div>
