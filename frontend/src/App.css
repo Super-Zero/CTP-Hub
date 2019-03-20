@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto';
+}
+
 .App {
   text-align: center;
 }
@@ -6,7 +10,7 @@
   margin-right: auto;
   margin-left: auto;
   height: 40vmin;
-  width: 50vmin;
+  width: 47vmin;
 }
 
 .App-header {
@@ -25,4 +29,22 @@
   text-decoration: none;
 }
 
+.Row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
+.Col-25 {
+  text-align: left;
+  padding-left: 35px;
+  float: left;
+  width: 27%;
+  margin-top: 12px;
+}
+
+.Col-75 {
+  float: left;
+  width: 65%;
+  margin-top: 6px;
+}
