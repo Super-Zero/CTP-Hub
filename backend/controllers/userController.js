@@ -11,10 +11,31 @@ exports.signUp = (req,res,next)=>
 	models.User.create({
 		email: req.body.email,
 		password: hashPassword,
-		typeOfUser: req.body.typeOfUser
+		typeOfUser: req.body.typeOfUser,
+		firstName: req.body.fName,
+		lastName: req.body.lName
 	})
 	.then((result)=>{
-		 res.status(200).json({'message':'User has been created!'})
+		if (req.body.typeOfUser === "staff") {
+			models.Staff.create({
+				staffEmail:req.body.email,
+				staffCode: req.body.code,
+			}).then((result)=>{
+				res.status(200).json({'message':'Staff has been created!'})
+			}).catch(err=>{
+				res.status(400).json({'message':'Staff Creation has been failed!','error':err})
+			});
+		}
+		else {
+			models.Student.create({
+				studentEmail:req.body.email,
+				studentCode: req.body.code,
+			}).then((result)=>{
+				res.status(200).json({'message':'Student has been created!'})
+			}).catch(err=>{
+				res.status(400).json({'message':'Student Creation has been failed!','error':err})
+			});
+		}
 	}).catch(err=>{
 		res.status(400).json({'message':'User Creation has been failed!',
 								'error':err})
@@ -28,7 +49,6 @@ exports.login = (req,res, next)=>
 		where:{email:req.body.email}
 	}).then(user=>
 	{	
-		console.log(user)
 		if (user===null)
 			res.status(400).json({'error':'User not found!'});
 		else
@@ -61,7 +81,6 @@ exports.login = (req,res, next)=>
 			});
 	}).catch(err=>
 	{
-		console.log(err)
 		res.status(400).json({'error':err})
 	});
 }
@@ -71,7 +90,40 @@ exports.get = (req,res,next)=>
 	models.User.findAll().then(result=>
 	{
 		res.status(200).json(result);
-	})
+	}).catch(err=>
+	{
+		res.status(400).json({'error':err})
+	});
+}
+
+exports.getAStudent = (req,res,next)=>
+{
+	models.User.findAll({
+		where : {
+			email: req.query.email
+		}
+	}).then(result=>
+	{
+		res.status(200).json(result);
+	}).catch(err=>
+	{
+		res.status(400).json({'error':err})
+	});
+}
+
+exports.getStudents = (req,res,next)=>
+{
+	models.User.findAll({
+		where: {
+			typeOfUser: 'student'
+		}
+	}).then(result=>
+	{
+		res.status(200).json(result);
+	}).catch(err=>
+	{
+		res.status(400).json({'error':err})
+	});
 }
 
 

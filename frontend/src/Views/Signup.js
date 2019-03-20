@@ -36,10 +36,10 @@ class InputForm extends Component {
         return (
         <div className="Row">
           <div className="Col-25">
-            {(!this.props.isPassword)? 
+            {(!this.props.isPassword)?
               <label htmlFor={fieldInputs[key]}>
                 {fieldNames[index]}
-              </label> 
+              </label>
               : 
               <label htmlFor={fieldInputs[key]}>
                 {key}
@@ -48,6 +48,7 @@ class InputForm extends Component {
           <div className="Col-75">
           {(!this.props.isPassword)? 
             <input 
+              className="InputForm"
               type="text" 
               onChange={this.props.field[key]} 
               name={key} 
@@ -56,6 +57,7 @@ class InputForm extends Component {
               id="inpF"/> 
             : 
             <input 
+              className="InputForm"
               type="password" 
               onChange={this.props.field[key]} 
               name={key} 
@@ -75,7 +77,12 @@ class InputForm extends Component {
 
 class StuStaffButton extends Component {
   render() {
-    return <div className="S-button" id={this.props.comp} onClick={() => this.props.handleButtonClick(this.props.name)}>{this.props.student}</div>
+    return <div 
+      className="S-button" 
+      id={this.props.comp} 
+      onClick={() => this.props.handleButtonClick(this.props.name)}>
+        {this.props.student}
+      </div>
   }
 }
 
@@ -123,7 +130,10 @@ class SignupStudent extends Component {
       axios.post(`http://localhost:3001/users/signup`,{
         "email":this.state.eMail,
         "password":this.state.password,
-        "typeOfUser": this.state.studentSignUp? "student" : "staff"
+        "typeOfUser": this.state.studentSignUp? "student" : "staff",
+        "fName": this.state.fName,
+        "lName": this.state.lName,
+        "code" : this.state.studentSignUp? this.state.sCode : this.state.staffCode
       }).then(res=>
       {
         alert("Sucessful signing up!");
@@ -146,6 +156,10 @@ class SignupStudent extends Component {
     else if (name === "Student" && sSignUp === false) {
       this.setState({studentSignUp : !sSignUp});
     }
+  }
+
+  componentDidMount() {
+    document.title = "Signup"
   }
 
   render() {
@@ -199,7 +213,7 @@ class SignupStudent extends Component {
             comp={studentSignUp? "":"signup"} 
             handleButtonClick={this.handleButtonClick} 
             name="Staff"/>
-          <div classname="inpForm">
+          <div classname="InputForm inpForm">
           <form onSubmit={this.handleSubmitForm}>
             <InputForm 
               field={inputFields} 
