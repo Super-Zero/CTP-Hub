@@ -5,13 +5,8 @@ import Home from './Views/Home.js'
 import Signup from './Views/Signup'
 import Login from './Views/Login'
 import Staff from './Views/StaffDash'
-import theme from './materialTheme'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import StudentDashboardMain from './studentDashboard/studentDashboardMain'
 import history from './history';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 
 class App extends Component {
   constructor(props)

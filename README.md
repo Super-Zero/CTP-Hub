@@ -11,5 +11,3 @@ CTP_Hub is the made for CTP students and staff by CTP students. The goal of CTP_
 * MAJOR refactoring has to be done, primarily on the front-end. I had to put together the Student and Staff Job Tracking interface in 7 hours for demo night so a lot of spaghetti code exists in those files as well as the signup form.
 
 * Test data for the database needs to be modified since the models have been and will be updated.
-
-

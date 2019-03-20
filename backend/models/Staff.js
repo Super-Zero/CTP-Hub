@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) =>
 		staffCode: {
             type: DataTypes.INTEGER,
             allowNull: true,
-        }
-	});
+		}
 
 	Staff.associate = (models)=>
 	{
