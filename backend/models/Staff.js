@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) =>
             type: DataTypes.INTEGER,
             allowNull: true,
 		}
-
+	});
+	
 	Staff.associate = (models)=>
 	{
 		models.Staff.belongsTo(models.User);
